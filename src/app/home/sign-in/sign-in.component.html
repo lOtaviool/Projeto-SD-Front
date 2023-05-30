@@ -1,0 +1,27 @@
+
+<div class="toolbar" fxLayout="row" fxLayoutAlign="center center">
+    <span>MLT Ações</span>
+</div>
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="card">
+        <div fxLayoutAlign="center center">
+            <h1 style="font-size: 40px; margin-bottom: 40px;">Login</h1>
+        </div>
+        <form [formGroup]="myForm" fxLayout="column" fxLayoutAlign="center center">
+            <div fxLayout="column" class="form">
+                <label>E-mail</label>
+                <input class="input-form" formControlName="email" >
+            </div>
+            <br>
+            <div fxLayout="column" class="form">
+                <label>Senha</label>
+                <input class="input-form" formControlName="password" >
+            </div>
+            <br><br><br>
+            <button mat-flat-button class="sign-in-button">Entrar</button>
+        </form>
+        <div fxLayoutAlign="center center" style="margin-top: 30px;">
+            <p>Não é um usuário? <a [routerLink]="['signup']">Cadastre-se</a></p>
+        </div>
+    </mat-card>
+</div>
