@@ -26,10 +26,23 @@ export class SignInComponent implements OnInit {
 
     initForm(){
         this.myForm = this.formBuilder.group({
-            name: ['', [Validators.required]],
-            email: ['', [Validators.required]],
-            password: ['', [Validators.required]],
-            date: ['', [Validators.required]],
+            email: ['', [
+                Validators.required, 
+                Validators.email
+            ]],
+            password: ['', [
+                Validators.required, 
+                Validators.minLength(8),
+                Validators.maxLength(20)
+            ]],
         })
+    }
+
+    login(){
+        const form = {
+            email: this.myForm.controls.email.value,
+            password: this.myForm.controls.password.value
+        }
+        this.systemService.authLogin(form);
     }
 }

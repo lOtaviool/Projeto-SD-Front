@@ -1,0 +1,56 @@
+.toolbar{
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 100px !important;
+    // margin-bottom: 30px;
+    
+    span{
+        font-size: 40px;
+    }
+}
+
+.container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+
+    .card{
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 500px !important;
+        // height: 500px;
+        // max-width: 450px !important;
+    }
+
+    .form{
+        width: 400px !important;  
+        label{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    
+        .input-form{
+            padding: 10px;
+            border: 2px solid #d9d9d9;
+            border-radius: 4px;
+            font-size: 17px;
+        }
+    }
+
+    .sign-in-button {
+        background-color: #3399ff !important;
+        color: white !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        line-height: 48px;
+        height: auto;
+        width: auto;
+    }
+}
+
+

@@ -1,0 +1,42 @@
+<div class="toolbar" fxLayout="row" fxLayoutAlign="center center">
+    <span>MLT Ações</span>
+</div>
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="card">
+        <div fxLayoutAlign="center center">
+            <h1 style="font-size: 40px; margin-bottom: 40px;">Login</h1>
+        </div>
+        <form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="center center" novalidate>
+            <div fxLayout="column" class="form">
+                <label>Nome Completo * </label>
+                <input class="input-form" type="text" formControlName="fullName" >
+                <mat-error *ngIf="signupForm.get('fullName').errors?.minlength">Mínimo de 5 caracteres!</mat-error>
+                <mat-error *ngIf="signupForm.get('fullName').errors?.maxlength">Máximo de 40 caracteres!</mat-error>
+            </div>
+            <br>
+            <div fxLayout="column" class="form">
+                <label>Nome de Usuário *</label>
+                <input class="input-form" type="text" formControlName="userName" >
+                <mat-error *ngIf="signupForm.get('userName').errors?.minlength">Mínimo de 5 caracteres!</mat-error>
+            </div>
+            <br>
+            <div fxLayout="column" class="form">
+                <label>E-mail *</label>
+                <input class="input-form" type="email" formControlName="email" >
+                <mat-error *ngIf="signupForm.get('email').errors?.email">Email inválido!</mat-error>
+            </div>
+            <br>
+            <div fxLayout="column" class="form">
+                <label>Senha *</label>
+                <input class="input-form" type="password" formControlName="password" required>
+                <mat-error *ngIf="signupForm.get('password').errors?.minlength">Mínimo de 8 caracteres!</mat-error>
+                <mat-error *ngIf="signupForm.get('password').errors?.maxlength">Máximo de 20 caracteres!</mat-error>
+            </div>
+            <br><br><br>
+            <button mat-flat-button class="sign-in-button" [disabled]="signupForm.invalid">Cadastrar</button>
+        </form>
+        <div fxLayoutAlign="center center" style="margin-top: 30px;">
+            <p>Não é um usuário? <a [routerLink]="['signup']">Cadastre-se</a></p>
+        </div>
+    </mat-card>
+</div>

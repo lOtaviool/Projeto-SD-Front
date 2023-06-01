@@ -7,21 +7,24 @@
         <div fxLayoutAlign="center center">
             <h1 style="font-size: 40px; margin-bottom: 40px;">Login</h1>
         </div>
-        <form [formGroup]="myForm" fxLayout="column" fxLayoutAlign="center center">
+        <form [formGroup]="myForm" fxLayout="column" fxLayoutAlign="center center" novalidate>
             <div fxLayout="column" class="form">
                 <label>E-mail</label>
-                <input class="input-form" formControlName="email" >
+                <input class="input-form" type="email" formControlName="email" >
+                <mat-error *ngIf="myForm.get('email').errors?.email">Email inválido!</mat-error>
             </div>
             <br>
             <div fxLayout="column" class="form">
                 <label>Senha</label>
-                <input class="input-form" formControlName="password" >
+                <input class="input-form" type="password" formControlName="password" required>
+                <mat-error *ngIf="myForm.get('password').errors?.minlength">Mínimo de 8 caracteres!</mat-error>
+                <mat-error *ngIf="myForm.get('password').errors?.maxlength">Máximo de 20 caracteres!</mat-error>
             </div>
             <br><br><br>
-            <button mat-flat-button class="sign-in-button">Entrar</button>
+            <button mat-flat-button class="sign-in-button" (click)="login()">Entrar</button>
         </form>
         <div fxLayoutAlign="center center" style="margin-top: 30px;">
-            <p>Não é um usuário? <a [routerLink]="['signup']">Cadastre-se</a></p>
+            <p>Não é um usuário? <a [routerLink]="['sign-up']">Cadastre-se</a></p>
         </div>
     </mat-card>
 </div>

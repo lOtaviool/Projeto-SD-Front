@@ -9,11 +9,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
     declarations: [
         HomeComponent,
-        SignInComponent
+        SignInComponent,
+        SignUpComponent
         
     ],
     imports: [
@@ -28,7 +30,8 @@ import { HomeRoutingModule } from './home-routing.module';
     ],
     exports:[
         HomeComponent,
-        SignInComponent
+        SignInComponent,
+        SignUpComponent
     ],
     providers: [],
     bootstrap: [HomeComponent]

@@ -13,4 +13,8 @@ export class SystemService {
         private http: HttpClient, 
         private router: Router
     ) {}
+
+    authLogin(user:any){
+        console.log(user);
+    }
 }
