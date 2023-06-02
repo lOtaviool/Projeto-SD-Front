@@ -8,6 +8,7 @@ import { HomeModule } from './home/home.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ActionsModule } from './actions/actions.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule
+    HomeModule,
+    ActionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

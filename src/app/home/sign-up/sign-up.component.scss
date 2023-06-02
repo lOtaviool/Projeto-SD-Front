@@ -1,17 +1,22 @@
+
 .toolbar{
-    padding-left: 80px;
-    padding-right: 80px;
-    height: 100px !important;
-    // margin-bottom: 30px;
-    
-    span{
-        font-size: 40px;
-    }
+    width: 100% !important;
+        background-color: white;
+        padding: 40px;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+        height: 100px !important;
+        margin-bottom: 30px;
+        justify-content: space-between !important;
+        
+        span{
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 40px;
+        }
 }
 
 .container {
     width: 100%;
-    height: 80vh;
+    height: auto;
     display: flex;
     // flex-direction: row;
     // justify-content: center;
@@ -50,7 +55,6 @@
         line-height: 48px;
         height: auto;
         width: auto;
-    }
+      }
 }
-
 

@@ -1,10 +1,22 @@
-<div class="toolbar" fxLayout="row" fxLayoutAlign="center center">
-    <span>MLT Ações</span>
+
+<div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
+    <a fxLayoutGap="10px">
+        <img src="../../assets/grafico.png" width="50px" height="50px">
+        <span>MLT Ações</span>
+    </a>
+
+    <!-- <div>
+        
+    </div> -->
+
+    <div>
+        <a [routerLink]="['']">Faça Login!</a>
+    </div>
 </div>
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="card">
         <div fxLayoutAlign="center center">
-            <h1 style="font-size: 40px; margin-bottom: 40px;">Login</h1>
+            <h1 style="font-size: 40px; margin-bottom: 40px;">Cadastre-se</h1>
         </div>
         <form [formGroup]="signupForm" fxLayout="column" fxLayoutAlign="center center" novalidate>
             <div fxLayout="column" class="form">
@@ -35,8 +47,5 @@
             <br><br><br>
             <button mat-flat-button class="sign-in-button" [disabled]="signupForm.invalid">Cadastrar</button>
         </form>
-        <div fxLayoutAlign="center center" style="margin-top: 30px;">
-            <p>Não é um usuário? <a [routerLink]="['signup']">Cadastre-se</a></p>
-        </div>
     </mat-card>
 </div>

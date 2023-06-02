@@ -1,30 +1,39 @@
 
-<div class="toolbar" fxLayout="row" fxLayoutAlign="center center">
-    <span>MLT Ações</span>
-</div>
-<div class="container" fxLayout="row" fxLayoutAlign="center center">
-    <mat-card class="card">
-        <div fxLayoutAlign="center center">
-            <h1 style="font-size: 40px; margin-bottom: 40px;">Login</h1>
+<div>
+    <div class="toolbar" fxLayout="row" fxLayoutAlign="start center">
+        <a fxLayoutGap="10px">
+            <img src="../../assets/grafico.png" width="50px" height="50px">
+            <span>MLT Ações</span>
+        </a>
+
+        <div>
+            <p>Faça Login!</p>
         </div>
-        <form [formGroup]="myForm" fxLayout="column" fxLayoutAlign="center center" novalidate>
-            <div fxLayout="column" class="form">
-                <label>E-mail</label>
-                <input class="input-form" type="email" formControlName="email" >
-                <mat-error *ngIf="myForm.get('email').errors?.email">Email inválido!</mat-error>
+    </div>
+    <div class="container" fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="card">
+            <div fxLayoutAlign="center center">
+                <h1 style="font-size: 40px; margin-bottom: 40px;">Bem Vindo!</h1>
             </div>
-            <br>
-            <div fxLayout="column" class="form">
-                <label>Senha</label>
-                <input class="input-form" type="password" formControlName="password" required>
-                <mat-error *ngIf="myForm.get('password').errors?.minlength">Mínimo de 8 caracteres!</mat-error>
-                <mat-error *ngIf="myForm.get('password').errors?.maxlength">Máximo de 20 caracteres!</mat-error>
+            <form [formGroup]="myForm" fxLayout="column" fxLayoutAlign="center center" novalidate>
+                <div fxLayout="column" class="form">
+                    <label>E-mail</label>
+                    <input class="input-form" type="email" formControlName="email" >
+                    <mat-error *ngIf="myForm.get('email').errors?.email">Email inválido!</mat-error>
+                </div>
+                <br>
+                <div fxLayout="column" class="form">
+                    <label>Senha</label>
+                    <input class="input-form" type="password" formControlName="password" required>
+                    <mat-error *ngIf="myForm.get('password').errors?.minlength">Mínimo de 8 caracteres!</mat-error>
+                    <mat-error *ngIf="myForm.get('password').errors?.maxlength">Máximo de 20 caracteres!</mat-error>
+                </div>
+                <br><br><br>
+                <button mat-flat-button class="sign-in-button" (click)="login()">Entrar</button>
+            </form>
+            <div fxLayoutAlign="center center" style="margin-top: 30px;">
+                <p>Não é um usuário? <a [routerLink]="['sign-up']">Cadastre-se</a></p>
             </div>
-            <br><br><br>
-            <button mat-flat-button class="sign-in-button" (click)="login()">Entrar</button>
-        </form>
-        <div fxLayoutAlign="center center" style="margin-top: 30px;">
-            <p>Não é um usuário? <a [routerLink]="['sign-up']">Cadastre-se</a></p>
-        </div>
-    </mat-card>
+        </mat-card>
+    </div>
 </div>

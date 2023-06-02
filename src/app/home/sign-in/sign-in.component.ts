@@ -10,6 +10,7 @@ import { SystemService } from "src/app/shared/services/system.service";
 })
 export class SignInComponent implements OnInit {
     public myForm: any = FormGroup;
+    public sessionForm: any;
 
     constructor(
         private systemService: SystemService,
@@ -17,7 +18,7 @@ export class SignInComponent implements OnInit {
         private router: Router,
 		private route: ActivatedRoute,
     ){
-
+        
     }
 
     ngOnInit(): void {
@@ -39,10 +40,15 @@ export class SignInComponent implements OnInit {
     }
 
     login(){
-        const form = {
-            email: this.myForm.controls.email.value,
-            password: this.myForm.controls.password.value
+        if(this.myForm.valid){
+            const form = {
+                email: this.myForm.controls.email.value,
+                password: this.myForm.controls.password.value,
+                name: 'Luis Otávio',
+                id: 1
+            }
+            this.systemService.updateForm(form)
+            this.router.navigate(['actions']);
         }
-        this.systemService.authLogin(form);
     }
 }
