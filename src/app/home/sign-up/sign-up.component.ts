@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NewUser } from 'src/app/shared/interfaces/new-user';
+import { SystemService } from 'src/app/shared/services/system.service';
 
 @Component({
     selector: 'app-sign-up',
@@ -14,6 +16,7 @@ export class SignUpComponent implements OnInit {
     
     constructor(
         private formBuilder: FormBuilder,
+        private systemService: SystemService,
         private router: Router,
     ) {}
 
@@ -23,13 +26,6 @@ export class SignUpComponent implements OnInit {
                 [
                     Validators.required,
                     Validators.email
-                ]
-            ],
-            fullName: ['', 
-                [
-                    Validators.required,
-                    Validators.minLength(5),
-                    Validators.maxLength(40)
                 ]
             ],
             userName: ['', 
@@ -46,17 +42,31 @@ export class SignUpComponent implements OnInit {
                     Validators.minLength(8),
                     Validators.maxLength(14)
                 ]
-            ]
+            ],
+            pswdVerify: ['', 
+                [
+                    this.checkPasswords,
+                    Validators.required
+                ]
+            ],
         });    
     } 
 
+    checkPasswords: ValidatorFn = ():  ValidationErrors | null => { 
+        let pass = this.signupForm.controls?.password.value;
+        let confirmPass = this.signupForm.controls?.pswdVerify.value;
+        return pass === confirmPass ? null : { notSame: true }
+    }
+
     signup() {
-        // const newUser = this.signupForm.getRawValue() as NewUser;
-        // this.signUpService
-        //     .signup(newUser)
-        //     .subscribe(
-        //         () => this.router.navigate(['']),
-        //         err => console.log(err)
-        //     );
+        
+        const newUser = this.signupForm.getRawValue() as NewUser;
+        console.log(newUser)
+        // this.systemService
+        // .signup(newUser)
+        // .subscribe(
+        //     () => this.router.navigate(['']),
+        //     err => console.log(err)
+        // );
     }
 }

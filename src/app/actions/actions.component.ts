@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SystemService } from '../shared/services/system.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-actions',
@@ -17,7 +18,9 @@ export class ActionsComponent implements OnInit {
 
     constructor(
         private activatedRoute: ActivatedRoute,
-        private systemService: SystemService
+        private systemService: SystemService,
+        public dialog: MatDialog
+
     ) { 
         this.sessionForm = this.systemService.getform();
     }
@@ -28,6 +31,12 @@ export class ActionsComponent implements OnInit {
         //   this.photos = this.activatedRoute.snapshot.data['photos'];
         // });
     }
+
+    // openDialog(){
+    //     const dialogRef = new MatDialogConfig();
+    //     dialogRef.disableClose = true;
+    //      this.dialog.open(cdialogRef)
+    // }
 
     load() {
         this.systemService

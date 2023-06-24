@@ -18,6 +18,11 @@ export class SystemService {
         this.getform()
     }
 
+	signup(newUser: any) {
+		const url = this.url + '/user/signup';
+        return this.http.post(url, newUser);
+    }
+
     getform(): User {
 		let stored: any = sessionStorage.getItem("form");
 		this.form = JSON.parse(stored);
