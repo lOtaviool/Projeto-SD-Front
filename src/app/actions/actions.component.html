@@ -4,16 +4,11 @@
             <img src="../../assets/grafico.png" width="50px" height="50px">
             <span>MLT Ações</span>
         </a>
-        <!-- <div style="width: 400px;">
-            <form>
-                <i aria-hidden="true"></i>
-                <input 
-                    class="rounded" 
-                    type="search" 
-                    placeholder="search..." 
-                    autofocus
-                    >
-            </form>
+        <mat-form-field class="search-input">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="search" placeholder="search here" >
+        </mat-form-field>
+        <!-- <div style="background-color: aqua;width: 300px;" height="50px" fxLayoutAlign="center center">
         </div> -->
 
         <!-- <div>
@@ -21,34 +16,53 @@
             <a [routerLink]="['']">{{sessionForm?.name}}</a>
         </div> -->
     </div>
-    <div class='list-actions'>
-        <mat-card class="example-card" *ngFor="let action of sessionForm; index as i">
-            <mat-card-header style="background-color: #eee; justify-content: space-between;">
-                <mat-card-title>{{action.codigo}}</mat-card-title>
-                <mat-card-subtitle>{{action.data}}</mat-card-subtitle>
-                <div>
-                </div>
-                <button mat-mini-fab color="Accent" matTooltip="Ver mais">
-                    <mat-icon fontIcon="visibility"></mat-icon>
-                </button>
-            </mat-card-header>
-            <br>
-            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-            <mat-card-content style="display: flex; flex-direction: column;">
-              <p>Descrição - {{action.descricao}}</p>
-              <p>Close - {{action.close}}</p>
-              <p>High - {{action.high}}</p>
-              <p>Id - {{action.id}}</p>
-              <p>Volume - {{action.volume}}</p>
-            </mat-card-content>
-            <mat-card-actions style="gap: 10px; margin-top: 10px;">
-              <button mat-raised-button>
-                <mat-icon fontIcon="edit"></mat-icon>
-                Editar
-                </button>
-              <button mat-raised-button color="warn">Deletar</button>
-
-            </mat-card-actions>
-        </mat-card>
+    <div *ngIf="!verifyAction" fxLayout="column" fxLayoutAlign="center center" style="margin-top: 100px; color: #777;">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <p style="font-size: 22px; font-weight: bold;">Opss!!! Você ainda não possui ações</p>
+            <p style="font-size: 22px;">Clique no botão abaixo para adicionar uma nova ação!</p>
+        </div>
+        <br>
+        <div fxLayoutAlign="end" style="padding: 0px 20px;">
+            <button mat-raised-button color="primary">
+                <mat-icon fontIcon="add"></mat-icon>
+                Adicionar 
+            </button>
+        </div>
+    </div>
+    <div *ngIf="verifyAction" fxLayout="column">
+        <div fxLayoutAlign="end" style="padding: 0px 20px;">
+            <button mat-raised-button color="primary" matTooltip="Adicionar nova ação">
+                <mat-icon fontIcon="add"></mat-icon>
+                Adicionar 
+            </button>
+        </div>
+        <div class='list-actions'>
+            <mat-card class="example-card" *ngFor="let action of actionList; index as i">
+                <mat-card-header style="background-color: #eee; justify-content: space-between;">
+                    <mat-card-title> Ação - {{action.codigo}}</mat-card-title>
+                    <mat-card-subtitle>{{action.data}}</mat-card-subtitle>
+                    <div>
+                    </div>
+                    <button mat-mini-fab color="Accent" matTooltip="Ver mais">
+                        <mat-icon fontIcon="visibility"></mat-icon>
+                    </button>
+                </mat-card-header>
+                <br>
+                <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+                <mat-card-content fxLayout="column" fxLayoutAlign="start">
+                  <p style="font-weight: bold;">Descrição</p>
+                  <p>{{action.descricao}}</p>
+                </mat-card-content>
+    
+                <mat-card-actions fxLayoutAlign="end" style="gap: 10px; margin-top: 10px;">
+                    <button mat-raised-button (click)="editAction(action)">
+                        <mat-icon fontIcon="edit"></mat-icon>
+                        Editar
+                    </button>
+                    <button mat-raised-button color="warn">Deletar</button>
+    
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
 </div>

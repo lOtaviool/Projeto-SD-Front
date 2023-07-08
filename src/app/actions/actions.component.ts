@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SystemService } from '../shared/services/system.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { removeStyles } from '@angular/flex-layout';
+import { EditActionService } from '../shared/dialogs/edit-action/edit-action.service';
 
 @Component({
     selector: 'app-actions',
@@ -10,6 +11,39 @@ import { removeStyles } from '@angular/flex-layout';
     styleUrls: ['./actions.component.scss']
 })
 export class ActionsComponent implements OnInit {
+    // public actionList: any = [
+    //     {
+    //         codigo: 123,
+    //         data: '20/02/2023',
+    //         volume: 2,
+    //         descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+    //         high: 33,
+    //         id: 1234567890, 
+    //         close: 123
+    //     },
+    //     {
+    //         codigo: 456,
+    //         data: '20/02/2023',
+    //         volume: 5,
+    //         descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+    //         high: 33,
+    //         id: 97627892322,
+    //         close: 44
+    //     },
+    //     {
+    //         codigo: 789,
+    //         data: '20/02/2023',
+    //         volume: 5,
+    //         descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+    //         high: 33,
+    //         id: 97627892322,
+    //         close: 44
+    //     },
+    // ];
+
+    public actionList: any = [];
+    public verifyAction: boolean = false;
+
     public sessionForm: any;
 
     filter: string = '';
@@ -20,10 +54,13 @@ export class ActionsComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private systemService: SystemService,
+        private editActionService: EditActionService,
         public dialog: MatDialog
 
     ) { 
-        this.getAction();
+        // this.getAction();
+        this.sessionForm = this.systemService.getform()
+        
     }
 
     ngOnInit(): void {
@@ -40,10 +77,41 @@ export class ActionsComponent implements OnInit {
     // }
 
     getAction(){
-        this.systemService.getAction().subscribe((res:any)=>{
-            console.log(res)
-            this.sessionForm = res;
-        })
+        // this.systemService.getAction().subscribe((res:any)=>{
+        //     console.log(res)
+        //     this.sessionForm = res;
+        // })
+        this.actionList = [
+                {
+                    codigo: 123,
+                    data: '20/02/2023',
+                    volume: 2,
+                    descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+                    high: 33,
+                    id: 1234567890, 
+                    close: 123
+                },
+                {
+                    codigo: 456,
+                    data: '20/02/2023',
+                    volume: 5,
+                    descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+                    high: 33,
+                    id: 97627892322,
+                    close: 44
+                },
+                {
+                    codigo: 789,
+                    data: '20/02/2023',
+                    volume: 5,
+                    descricao: 'Esta ação é uma porcentagem da empresa Google, e garante ao investidor beneficios futuros.',
+                    high: 33,
+                    id: 97627892322,
+                    close: 44
+                },
+            ];
+
+            this.verifyAction = true
     }
 
     load() {
@@ -55,5 +123,9 @@ export class ActionsComponent implements OnInit {
     //         this.photos = this.photos.concat(photos);
     //         if(!photos.length) this.hasMore = false;
     //       });
+    }
+
+    editAction(action: any){
+        this.editActionService.showAlert(action);
     }
 }

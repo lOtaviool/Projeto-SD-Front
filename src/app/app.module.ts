@@ -9,11 +9,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActionsModule } from './actions/actions.module';
+import { EditActionComponent } from './shared/dialogs/edit-action/edit-action.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    EditActionComponent
 
   ],
   imports: [
