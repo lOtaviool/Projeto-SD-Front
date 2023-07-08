@@ -15,7 +15,7 @@ export class SystemService {
         private http: HttpClient, 
         private router: Router
     ) {
-        this.getform()
+        // this.getform()
     }
 
 	signup(newUser: any) {
@@ -23,15 +23,9 @@ export class SystemService {
         return this.http.post(url, newUser);
     }
 
-    getform(): User {
-		let stored: any = sessionStorage.getItem("form");
-		this.form = JSON.parse(stored);
-		
-		if(this.form == null){
-			return this.form = {}
-		} else {
-			return this.form
-		}
+    getAction() {
+		const url = `${this.url}/api/app`
+		return this.http.get(url);
 
 	}
 

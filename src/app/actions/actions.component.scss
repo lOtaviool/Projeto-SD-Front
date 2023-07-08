@@ -5,11 +5,11 @@
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
     height: 100px !important;
     margin-bottom: 30px;
-    justify-content: space-between !important;
+    justify-content: center !important;
     
     span{
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        font-size: 40px;
+        font-size: 60px;
     }
 }
 
@@ -20,4 +20,11 @@
 .color1{
     background-color: #0000;
     color: #ffff;
+}
+
+.list-actions{
+    width: 100%;
+    padding: 20px;
+    gap: 30px;
+    display: flex !important;
 }

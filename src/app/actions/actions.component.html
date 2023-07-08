@@ -1,5 +1,5 @@
 <div>
-    <div class="header" fxLayout="row" fxLayoutAlign="start center">
+    <div class="header" fxLayout="row" fxLayoutAlign="center center">
         <a fxLayoutGap="10px">
             <img src="../../assets/grafico.png" width="50px" height="50px">
             <span>MLT Ações</span>
@@ -21,11 +21,11 @@
             <a [routerLink]="['']">{{sessionForm?.name}}</a>
         </div> -->
     </div>
-    <div style="padding: 20px;">
-        <mat-card class="example-card">
+    <div class='list-actions'>
+        <mat-card class="example-card" *ngFor="let action of sessionForm; index as i">
             <mat-card-header style="background-color: #eee; justify-content: space-between;">
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title>{{action.codigo}}</mat-card-title>
+                <mat-card-subtitle>{{action.data}}</mat-card-subtitle>
                 <div>
                 </div>
                 <button mat-mini-fab color="Accent" matTooltip="Ver mais">
@@ -34,16 +34,21 @@
             </mat-card-header>
             <br>
             <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-            <mat-card-content>
-              <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-              </p>
+            <mat-card-content style="display: flex; flex-direction: column;">
+              <p>Descrição - {{action.descricao}}</p>
+              <p>Close - {{action.close}}</p>
+              <p>High - {{action.high}}</p>
+              <p>Id - {{action.id}}</p>
+              <p>Volume - {{action.volume}}</p>
             </mat-card-content>
-            <mat-card-actions >
-              <button mat-flat-button color="warn">Adquirir</button>
+            <mat-card-actions style="gap: 10px; margin-top: 10px;">
+              <button mat-raised-button>
+                <mat-icon fontIcon="edit"></mat-icon>
+                Editar
+                </button>
+              <button mat-raised-button color="warn">Deletar</button>
+
             </mat-card-actions>
-          </mat-card>
+        </mat-card>
     </div>
 </div>
