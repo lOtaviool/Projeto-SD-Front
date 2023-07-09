@@ -1,12 +1,12 @@
 <div>
     <div class="header" fxLayout="row" fxLayoutAlign="center center">
         <a fxLayoutGap="10px">
-            <img src="../../assets/grafico.png" width="50px" height="50px">
+            <img src="../../assets/grafico-de-aumento-de-acoes.png" width="40px" height="30px">
             <span>MLT Ações</span>
         </a>
         <mat-form-field class="search-input">
             <mat-icon matPrefix>search</mat-icon>
-            <input matInput type="search" placeholder="search here" >
+            <input matInput type="search" placeholder="Pesquisar" >
         </mat-form-field>
         <!-- <div style="background-color: aqua;width: 300px;" height="50px" fxLayoutAlign="center center">
         </div> -->
@@ -23,7 +23,7 @@
         </div>
         <br>
         <div fxLayoutAlign="end" style="padding: 0px 20px;">
-            <button mat-raised-button color="primary">
+            <button mat-raised-button color="primary" (click)="createAction()">
                 <mat-icon fontIcon="add"></mat-icon>
                 Adicionar 
             </button>
@@ -31,7 +31,7 @@
     </div>
     <div *ngIf="verifyAction" fxLayout="column">
         <div fxLayoutAlign="end" style="padding: 0px 20px;">
-            <button mat-raised-button color="primary" matTooltip="Adicionar nova ação">
+            <button mat-raised-button color="primary" matTooltip="Adicionar nova ação" (click)="createAction()">
                 <mat-icon fontIcon="add"></mat-icon>
                 Adicionar 
             </button>

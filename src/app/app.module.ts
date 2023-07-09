@@ -6,16 +6,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/components/material/material.module';
 import { HomeModule } from './home/home.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActionsModule } from './actions/actions.module';
 import { EditActionComponent } from './shared/dialogs/edit-action/edit-action.component';
+import { CreateActionComponent } from './shared/dialogs/create-action/create-action.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditActionComponent
+    EditActionComponent,
+    CreateActionComponent
 
   ],
   imports: [
@@ -25,6 +27,7 @@ import { EditActionComponent } from './shared/dialogs/edit-action/edit-action.co
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HomeModule,
     ActionsModule

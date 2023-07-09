@@ -1,0 +1,45 @@
+<form [formGroup]="myForm" novalidate (submit)="confirm()" >
+    <div mat-dialog-title class="div-alert-title">
+        <div fxLayout="row" fxLayoutAlign="start center">
+        <b class="alert-title"><span>Nova Ação</span></b>
+        </div>
+    </div>
+    <div mat-dialog-content class="div-alert-content" fxLayout="column" fxLayoutAlign="start">
+        <mat-form-field style="width: auto;">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo">
+        </mat-form-field>
+    
+        <mat-form-field style="width: auto;">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao">
+        </mat-form-field>
+    
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <mat-form-field>
+                <mat-label>Volume</mat-label>
+                <input matInput formControlName="volume">
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id">
+            </mat-form-field>
+        </div>
+    
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <mat-form-field>
+                <mat-label>High</mat-label>
+                <input matInput formControlName="high">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Close</mat-label>
+                <input matInput formControlName="close">
+            </mat-form-field>
+        </div>
+        
+    </div>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+        <button mat-raised-button flex="33" class="cancel-button" (click)="cancel()">Fechar</button>
+        <button mat-raised-button color="primary" flex="33" class="cancel-button" [disabled]="myForm.invalid" type="submit">Confirmar</button>
+    </div>
+</form>

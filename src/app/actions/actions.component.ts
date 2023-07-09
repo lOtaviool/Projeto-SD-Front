@@ -4,6 +4,7 @@ import { SystemService } from '../shared/services/system.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { removeStyles } from '@angular/flex-layout';
 import { EditActionService } from '../shared/dialogs/edit-action/edit-action.service';
+import { CreateActionService } from '../shared/dialogs/create-action/create-action.service';
 
 @Component({
     selector: 'app-actions',
@@ -55,31 +56,20 @@ export class ActionsComponent implements OnInit {
         private activatedRoute: ActivatedRoute,
         private systemService: SystemService,
         private editActionService: EditActionService,
+        private createActionService: CreateActionService,
         public dialog: MatDialog
 
     ) { 
-        // this.getAction();
         this.sessionForm = this.systemService.getform()
         
     }
 
-    ngOnInit(): void {
-        // this.activatedRoute.params.subscribe(params => {
-        //   this.userName = params.userName;
-        //   this.photos = this.activatedRoute.snapshot.data['photos'];
-        // });
-    }
-
-    // openDialog(){
-    //     const dialogRef = new MatDialogConfig();
-    //     dialogRef.disableClose = true;
-    //      this.dialog.open(cdialogRef)
-    // }
+    ngOnInit(): void {}
 
     getAction(){
         // this.systemService.getAction().subscribe((res:any)=>{
         //     console.log(res)
-        //     this.sessionForm = res;
+        //     this.actionList = res;
         // })
         this.actionList = [
                 {
@@ -114,15 +104,8 @@ export class ActionsComponent implements OnInit {
             this.verifyAction = true
     }
 
-    load() {
-        this.systemService
-    //     this.photoService
-    //       .listFromUserPaginated(this.userName, ++this.currentPage)
-    //       .subscribe(photos => {
-    //         this.filter = '';
-    //         this.photos = this.photos.concat(photos);
-    //         if(!photos.length) this.hasMore = false;
-    //       });
+    createAction(){
+        this.createActionService.showAlert();
     }
 
     editAction(action: any){
