@@ -5,16 +5,10 @@
         </div>
     </div>
     <div mat-dialog-content class="div-alert-content" fxLayout="column" fxLayoutAlign="start">
-        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-            <mat-form-field>
-                <mat-label>Código</mat-label>
-                <input matInput formControlName="codigo">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Data</mat-label>
-                <input type="date" matInput formControlName="data">
-            </mat-form-field>
-        </div>
+        <mat-form-field style="width: auto;">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo">
+        </mat-form-field>
     
         <mat-form-field style="width: auto;">
             <mat-label>Descrição</mat-label>
@@ -24,33 +18,33 @@
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
             <mat-form-field>
                 <mat-label>Volume</mat-label>
-                <input matInput formControlName="volume">
+                <input type="number" matInput formControlName="volume">
             </mat-form-field>
-            <mat-form-field >
-                <mat-label>Id</mat-label>
-                <input matInput formControlName="id">
+            <mat-form-field>
+                <mat-label>Data</mat-label>
+                <input type="date" matInput formControlName="data">
             </mat-form-field>
         </div>
     
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
             <mat-form-field>
                 <mat-label>High</mat-label>
-                <input matInput formControlName="high">
+                <input type="number" matInput formControlName="high">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Low</mat-label>
-                <input matInput formControlName="low">
+                <input type="number" matInput formControlName="low">
             </mat-form-field>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
             <mat-form-field>
                 <mat-label>Open</mat-label>
-                <input matInput formControlName="open">
+                <input type="number" matInput formControlName="open">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Close</mat-label>
-                <input matInput formControlName="close">
+                <input type="number" matInput formControlName="close">
             </mat-form-field>
         </div>
         

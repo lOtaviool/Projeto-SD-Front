@@ -24,7 +24,6 @@ export class CreateActionComponent implements OnInit {
             data: ['', [Validators.required]],
             descricao:['', [Validators.required]],
             volume: ['', [Validators.required]],
-            id: ['', [Validators.required]],
             high: ['', [Validators.required]],
             low: ['', [Validators.required]],
             open: ['', [Validators.required]],
@@ -35,13 +34,14 @@ export class CreateActionComponent implements OnInit {
     ngOnInit(): void {}
 
     confirm(){
-        this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
-          if(res){
-            this.dialog.close()
-          }
-        }, (err)=>{
-          console.log(err)
-        })
+      this.dialog.close(this.myForm?.value)
+        // this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
+        //   if(res){
+        //     this.dialog.close(res)
+        //   }
+        // }, (err)=>{
+        //   console.log(err)
+        // })
       }
 
     cancel(){

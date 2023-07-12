@@ -53,6 +53,35 @@
                   <p style="font-weight: bold;">Descrição</p>
                   <p>{{action.descricao}}</p>
                 </mat-card-content>
+                <br>
+                <div *ngIf="actionInformationsId === action.id" id="card-informations" class="card-informations">
+                    <div class="row" fxLayout="row" fxLayoutGap="20px">
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;">Volume</p>
+                            <p>{{action.volume}}</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;;">Id</p>
+                            <p>{{action.id}}</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;">High</p>
+                            <p>{{action.high}}</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;">Low</p>
+                            <p>{{action.low}}</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;">Open</p>
+                            <p>{{action.open}}</p>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="start center">
+                            <p style="font-weight: bold;">Low</p>
+                            <p>{{action.close}}</p>
+                        </div>
+                    </div>
+                </div>
     
                 <mat-card-actions fxLayoutAlign="end" style="gap: 10px; margin-top: 10px;">
                     <button mat-raised-button (click)="editAction(action)">

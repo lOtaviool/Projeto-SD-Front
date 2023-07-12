@@ -14,7 +14,7 @@ import { CreateActionService } from '../shared/dialogs/create-action/create-acti
 export class ActionsComponent implements OnInit {
     public actionList: any = [];
     public verifyAction: boolean = false;
-
+    public actionInformationsId = '';
     public sessionForm: any;
 
     filter: string = '';
@@ -31,7 +31,7 @@ export class ActionsComponent implements OnInit {
 
     ) { 
         this.getAction()
-        this.sessionForm = this.systemService.getform()
+        // this.sessionForm = this.systemService.getform()
     }
 
     ngOnInit(): void {}
@@ -40,26 +40,44 @@ export class ActionsComponent implements OnInit {
         this.systemService.getAction().subscribe((res:any)=>{
             console.log(res)
             this.actionList = res;
+            this.verifyAction = true
         })
 
-        this.verifyAction = true
     }
 
     viewAction(action: any){
-        console.log('123', action)
+        if(this.actionInformationsId == '' || this.actionInformationsId != action.id){
+            this.actionInformationsId = action.id;
+            setTimeout(()=>{
+                let element: any = document.getElementById('card-informations');
+                element.classList.add('card-start');
+            }, 200);
+        } else{
+            let element: any = document.getElementById('card-informations');
+            element.classList.remove('card-start');
+            setTimeout(()=>{
+                this.actionInformationsId = '';
+            }, 500);
+        }
     }
 
     createAction(){
         this.createActionService.showAlert();
+        this.dialog.afterAllClosed.subscribe((res:any )=>{
+            this.getAction();
+        })
     }
 
     editAction(action: any){
         this.editActionService.showAlert(action);
+        this.dialog.afterAllClosed.subscribe((res:any )=>{
+            this.getAction();
+        })
     }
 
     deleteAction(action: any){
         this.systemService.deleteAction(action?.id).subscribe((res:any)=>{
-            console.log(res)
+            this.getAction();
         })
     }
 }
