@@ -29,6 +29,21 @@ export class SystemService {
 
 	}
 
+	createAction(element: any){
+		const url = `${this.url}/api/app`
+		return this.http.post(url, element);
+	}
+
+	editAction(element: any){
+		const url = `${this.url}/api/app/${element?.id}`
+		return this.http.put(url, element);
+	}
+
+	deleteAction(id: any){
+		const url = `${this.url}/api/app/${id}`
+		return this.http.delete(url);
+	}
+
     getform(): User {
 		let stored: any = sessionStorage.getItem("form");
 		this.form = JSON.parse(stored);

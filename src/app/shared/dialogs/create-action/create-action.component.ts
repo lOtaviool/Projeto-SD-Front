@@ -2,6 +2,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SystemService } from '../../services/system.service';
 
 @Component({
     selector: 'app-create-action',
@@ -16,13 +17,17 @@ export class CreateActionComponent implements OnInit {
         private formBuilder: FormBuilder,
         private dialog: MatDialogRef<CreateActionComponent>, 
         @Inject(MAT_DIALOG_DATA) public data: any,
+        public systemService: SystemService
     ) {
         this.myForm = this.formBuilder.group({
             codigo:['', [Validators.required]],
+            data: ['', [Validators.required]],
             descricao:['', [Validators.required]],
             volume: ['', [Validators.required]],
             id: ['', [Validators.required]],
             high: ['', [Validators.required]],
+            low: ['', [Validators.required]],
+            open: ['', [Validators.required]],
             close: ['', [Validators.required]],
         })
     }
@@ -30,8 +35,14 @@ export class CreateActionComponent implements OnInit {
     ngOnInit(): void {}
 
     confirm(){
-        console.log('FORM',this.myForm)
-    }
+        this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
+          if(res){
+            this.dialog.close()
+          }
+        }, (err)=>{
+          console.log(err)
+        })
+      }
 
     cancel(){
         this.dialog.close()

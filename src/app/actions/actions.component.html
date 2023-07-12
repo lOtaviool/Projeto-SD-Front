@@ -43,7 +43,7 @@
                     <mat-card-subtitle>{{action.data}}</mat-card-subtitle>
                     <div>
                     </div>
-                    <button mat-mini-fab color="Accent" matTooltip="Ver mais">
+                    <button mat-mini-fab color="Accent" matTooltip="Ver mais" (click)="viewAction(action)">
                         <mat-icon fontIcon="visibility"></mat-icon>
                     </button>
                 </mat-card-header>
@@ -59,7 +59,7 @@
                         <mat-icon fontIcon="edit"></mat-icon>
                         Editar
                     </button>
-                    <button mat-raised-button color="warn">Deletar</button>
+                    <button mat-raised-button color="warn" (click)="deleteAction(action)">Deletar</button>
     
                 </mat-card-actions>
             </mat-card>
