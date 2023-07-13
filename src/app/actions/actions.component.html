@@ -1,7 +1,7 @@
 <div>
     <div class="header" fxLayout="row" fxLayoutAlign="center center">
         <a fxLayoutGap="10px">
-            <img src="../../assets/grafico-de-aumento-de-acoes.png" width="40px" height="30px">
+            <img src="../../assets/grafico.png" width="50px" height="50px">
             <span>MLT Ações</span>
         </a>
         <mat-form-field class="search-input">
@@ -16,7 +16,7 @@
             <a [routerLink]="['']">{{sessionForm?.name}}</a>
         </div> -->
     </div>
-    <div *ngIf="!verifyAction" fxLayout="column" fxLayoutAlign="center center" style="margin-top: 100px; color: #777;">
+    <div *ngIf="!actionList.length" fxLayout="column" fxLayoutAlign="center center" style="margin-top: 100px; color: #777;">
         <div fxLayout="column" fxLayoutAlign="center center">
             <p style="font-size: 22px; font-weight: bold;">Opss!!! Você ainda não possui ações</p>
             <p style="font-size: 22px;">Clique no botão abaixo para adicionar uma nova ação!</p>
@@ -29,7 +29,7 @@
             </button>
         </div>
     </div>
-    <div *ngIf="verifyAction" fxLayout="column">
+    <div *ngIf="actionList.length" fxLayout="column">
         <div fxLayoutAlign="end" style="padding: 0px 20px;">
             <button mat-raised-button color="primary" matTooltip="Adicionar nova ação" (click)="createAction()">
                 <mat-icon fontIcon="add"></mat-icon>

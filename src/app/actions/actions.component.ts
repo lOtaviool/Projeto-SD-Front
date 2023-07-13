@@ -13,7 +13,6 @@ import { CreateActionService } from '../shared/dialogs/create-action/create-acti
 })
 export class ActionsComponent implements OnInit {
     public actionList: any = [];
-    public verifyAction: boolean = false;
     public actionInformationsId = '';
     public sessionForm: any;
 
@@ -40,7 +39,6 @@ export class ActionsComponent implements OnInit {
         this.systemService.getAction().subscribe((res:any)=>{
             console.log(res)
             this.actionList = res;
-            this.verifyAction = true
         })
 
     }
@@ -65,6 +63,7 @@ export class ActionsComponent implements OnInit {
         this.createActionService.showAlert();
         this.dialog.afterAllClosed.subscribe((res:any )=>{
             this.getAction();
+            this.ngOnInit();
         })
     }
 
@@ -72,6 +71,7 @@ export class ActionsComponent implements OnInit {
         this.editActionService.showAlert(action);
         this.dialog.afterAllClosed.subscribe((res:any )=>{
             this.getAction();
+            this.ngOnInit();
         })
     }
 

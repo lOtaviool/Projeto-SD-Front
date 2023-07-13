@@ -4,18 +4,10 @@
     </div>
 </div>
 <div mat-dialog-content class="div-alert-content" fxLayout="column" fxLayoutAlign="start">
-    
-
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <mat-form-field>
-            <mat-label>Código</mat-label>
-            <input matInput [(ngModel)]="action.codigo">
-        </mat-form-field>
-        <mat-form-field >
-            <mat-label>Data</mat-label>
-            <input matInput [(ngModel)]="action.data" type="date">
-        </mat-form-field>
-    </div>
+    <mat-form-field style="width: auto;">
+        <mat-label>Código</mat-label>
+        <input matInput [(ngModel)]="action.codigo">
+    </mat-form-field>
 
     <mat-form-field style="width: auto;">
         <mat-label>Descrição</mat-label>
@@ -28,8 +20,8 @@
             <input matInput [(ngModel)]="action.volume">
         </mat-form-field>
         <mat-form-field >
-            <mat-label>Id</mat-label>
-            <input matInput [(ngModel)]="action.id" [disabled]="true">
+            <mat-label>Data</mat-label>
+            <input matInput [(ngModel)]="action.data" type="date">
         </mat-form-field>
     </div>
 

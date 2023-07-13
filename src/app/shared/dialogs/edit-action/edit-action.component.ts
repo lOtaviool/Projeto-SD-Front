@@ -30,6 +30,8 @@ export class EditActionComponent implements OnInit {
     }, (err)=>{
       console.log(err)
     })
+
+    this.dialog.close()
   }
 
   cancel(){

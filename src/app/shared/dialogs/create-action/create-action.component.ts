@@ -34,14 +34,15 @@ export class CreateActionComponent implements OnInit {
     ngOnInit(): void {}
 
     confirm(){
-      this.dialog.close(this.myForm?.value)
-        // this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
-        //   if(res){
-        //     this.dialog.close(res)
-        //   }
-        // }, (err)=>{
-        //   console.log(err)
-        // })
+        this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
+          if(res){
+            this.dialog.close(res)
+          }
+        }, (err)=>{
+          console.log(err)
+        })
+
+        this.dialog.close()
       }
 
     cancel(){
