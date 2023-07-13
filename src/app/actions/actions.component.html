@@ -1,7 +1,9 @@
 <div>
     <div class="header" fxLayout="row" fxLayoutAlign="center center">
-        <a fxLayoutGap="10px">
-            <img src="../../assets/grafico.png" width="50px" height="50px">
+        <a fxLayoutGap="10px" fxLayout="row"  fxLayoutAlign="center center">
+            <div class="logo" fxLayoutAlign="center center">
+                <img src="../../assets/grafico.png" width="35px" height="35px">
+            </div>
             <span>MLT Ações</span>
         </a>
         <mat-form-field class="search-input">
@@ -88,7 +90,10 @@
                         <mat-icon fontIcon="edit"></mat-icon>
                         Editar
                     </button>
-                    <button mat-raised-button color="warn" (click)="deleteAction(action)">Deletar</button>
+                    <button mat-raised-button color="warn" (click)="deleteAction(action)">
+                        <mat-icon fontIcon="delete_outline"></mat-icon>
+                        Deletar
+                    </button>
     
                 </mat-card-actions>
             </mat-card>

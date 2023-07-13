@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SystemService } from '../../services/system.service';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
     selector: 'app-create-action',
@@ -17,7 +18,9 @@ export class CreateActionComponent implements OnInit {
         private formBuilder: FormBuilder,
         private dialog: MatDialogRef<CreateActionComponent>, 
         @Inject(MAT_DIALOG_DATA) public data: any,
-        public systemService: SystemService
+        public systemService: SystemService,
+        private loaderService: LoaderService,
+
     ) {
         this.myForm = this.formBuilder.group({
             codigo:['', [Validators.required]],
@@ -34,10 +37,9 @@ export class CreateActionComponent implements OnInit {
     ngOnInit(): void {}
 
     confirm(){
+      this.loaderService.showAlert(true)
         this.systemService.createAction(this.myForm?.value).subscribe((res:any)=>{ 
-          if(res){
-            this.dialog.close(res)
-          }
+          this.loaderService.showAlert(false)
         }, (err)=>{
           console.log(err)
         })

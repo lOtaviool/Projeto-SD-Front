@@ -2,6 +2,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog'
 import { Component, OnInit, Inject } from '@angular/core';
 import { SystemService } from '../../services/system.service';
+import { LoaderService } from '../loader/loader.service';
 
 @Component({
   selector: 'app-edit-action',
@@ -16,7 +17,8 @@ export class EditActionComponent implements OnInit {
     private dialog: MatDialogRef<EditActionComponent>, 
     @Inject(MAT_DIALOG_DATA) 
     public data: any,
-    public systemService: SystemService
+    public systemService: SystemService,
+    private loaderService: LoaderService,
   ){ 
     this.action = data.action;
   }
@@ -24,9 +26,10 @@ export class EditActionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  confirm(){
+  confirm(){   
+    this.loaderService.showAlert(true)
     this.systemService.editAction(this.action).subscribe((res:any)=>{
-      console.log('AQUI', res)
+    this.loaderService.showAlert(false)
     }, (err)=>{
       console.log(err)
     })

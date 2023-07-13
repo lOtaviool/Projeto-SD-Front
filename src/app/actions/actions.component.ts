@@ -5,6 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { removeStyles } from '@angular/flex-layout';
 import { EditActionService } from '../shared/dialogs/edit-action/edit-action.service';
 import { CreateActionService } from '../shared/dialogs/create-action/create-action.service';
+import { LoaderService } from '../shared/dialogs/loader/loader.service';
 
 @Component({
     selector: 'app-actions',
@@ -26,9 +27,11 @@ export class ActionsComponent implements OnInit {
         private systemService: SystemService,
         private editActionService: EditActionService,
         private createActionService: CreateActionService,
+        private loaderService: LoaderService,
         public dialog: MatDialog
 
     ) { 
+        this.loaderService.showAlert(true)
         this.getAction()
         // this.sessionForm = this.systemService.getform()
     }
@@ -39,6 +42,7 @@ export class ActionsComponent implements OnInit {
         this.systemService.getAction().subscribe((res:any)=>{
             console.log(res)
             this.actionList = res;
+            this.loaderService.showAlert(false)
         })
 
     }
@@ -63,7 +67,6 @@ export class ActionsComponent implements OnInit {
         this.createActionService.showAlert();
         this.dialog.afterAllClosed.subscribe((res:any )=>{
             this.getAction();
-            this.ngOnInit();
         })
     }
 
@@ -71,11 +74,12 @@ export class ActionsComponent implements OnInit {
         this.editActionService.showAlert(action);
         this.dialog.afterAllClosed.subscribe((res:any )=>{
             this.getAction();
-            this.ngOnInit();
+
         })
     }
 
     deleteAction(action: any){
+        this.loaderService.showAlert(true)
         this.systemService.deleteAction(action?.id).subscribe((res:any)=>{
             this.getAction();
         })

@@ -23,6 +23,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     imports: [
@@ -48,7 +49,9 @@ import {MatTabsModule} from '@angular/material/tabs';
         MatTooltipModule,
         ScrollingModule,
         MatMenuModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressSpinnerModule
+
     ],
     exports: [
         MatExpansionModule,
@@ -74,7 +77,8 @@ import {MatTabsModule} from '@angular/material/tabs';
         MatTooltipModule,
         ScrollingModule,
         MatMenuModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressSpinnerModule
     ],
     providers: [
         ScrollDispatcher

@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActionsModule } from './actions/actions.module';
 import { EditActionComponent } from './shared/dialogs/edit-action/edit-action.component';
 import { CreateActionComponent } from './shared/dialogs/create-action/create-action.component';
+import { LoaderComponent } from './shared/dialogs/loader/loader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EditActionComponent,
-    CreateActionComponent
+    CreateActionComponent,
+    LoaderComponent
 
   ],
   imports: [
